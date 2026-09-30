@@ -76,10 +76,7 @@ h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;text-wrap:balance;l
 .vf i:nth-child(2){top:0;right:0;border-top-width:1.5px;border-right-width:1.5px}
 .vf i:nth-child(3){bottom:0;left:0;border-bottom-width:1.5px;border-left-width:1.5px}
 .vf i:nth-child(4){bottom:0;right:0;border-bottom-width:1.5px;border-right-width:1.5px}
-.vf-top{position:absolute;top:10px;left:40px;right:40px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:rgba(245,245,247,.75)}
-.rec{display:flex;align-items:center;gap:8px}
-.rec::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);animation:blink 1.2s steps(2) infinite}
-@keyframes blink{50%{opacity:0}}
+.vf-top{position:absolute;top:10px;left:40px;right:40px;display:flex;justify-content:center;font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:rgba(245,245,247,.75)}
 .focus{position:absolute;left:50%;top:22%;width:clamp(90px,11vw,150px);aspect-ratio:1;border:1.5px solid rgba(245,245,247,.85);transform:scale(1.6);opacity:0;transition:transform .7s var(--ease) .9s,opacity .4s .9s,border-color .2s 1.9s}
 .focus::before,.focus::after{content:"";position:absolute;background:currentColor;color:rgba(245,245,247,.85)}
 .focus::before{left:50%;top:-8px;width:1.5px;height:8px}
@@ -359,7 +356,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
   </div>
   <div class="vf" aria-hidden="true">
     <i></i><i></i><i></i><i></i>
-    <div class="vf-top"><span class="rec">REC</span><span class="hide-sm">RAW+JPEG · 20 FPS · AF-C</span><span id="frameCount">FR 0000</span></div>
+    <div class="vf-top"><span class="hide-sm">RAW+JPEG · 20 FPS · AF-C</span></div>
     <div class="focus" id="focus"><span>AF LOCK · SUBJECT</span></div>
   </div>
   <div class="hero-content">
@@ -721,9 +718,6 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
   };
   placeFocus(); addEventListener('resize',placeFocus);
 
-  /* frame counter */
-  const fc=document.getElementById('frameCount'); let fr=0;
-  if(!reduce) setInterval(()=>{fr=(fr+1)%10000;fc.textContent='FR '+String(fr).padStart(4,'0');},50);
 
   /* nav */
   const nav=document.getElementById('nav');
