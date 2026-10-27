@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>if(location.hostname==="maranhao.gomatheus.com.br")location.replace("https://mmaranhaofoto.com"+location.pathname+location.search+location.hash)</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Matheus Maranhão Photography</title>
+<link rel="canonical" href="https://mmaranhaofoto.com/">
 <meta name="description" content="Matheus Maranhão, sports photographer based in Brasília, Brazil. Basketball, athletes and brand campaigns. Available worldwide.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://maranhao.gomatheus.com.br/">
+<meta property="og:url" content="https://mmaranhaofoto.com/">
 <meta property="og:title" content="Matheus Maranhão · Sports Photographer">
 <meta property="og:description" content="Sports, athletes and brand campaigns. Based in Brasília, available worldwide.">
-<meta property="og:image" content="https://maranhao.gomatheus.com.br/img/og.jpg">
+<meta property="og:image" content="https://mmaranhaofoto.com/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -60,6 +62,13 @@ h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;text-wrap:balance;l
 .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(255,91,31,.6);animation:pulse 2s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 8px rgba(255,91,31,0)}100%{box-shadow:0 0 0 0 rgba(255,91,31,0)}}
 @media (max-width:860px){.nav-links{display:none}}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang{display:flex;gap:2px;padding:3px;border:1px solid var(--line-2);border-radius:999px}
+.lang button{font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:5px 8px;border-radius:999px;color:var(--mute);transition:background .3s,color .3s}
+.lang button:hover{color:var(--text)}
+.lang button[aria-pressed="true"]{background:var(--text);color:#000}
+/* com o seletor de idioma não sobra espaço para o selo; a capa e o contato repetem a informação */
+@media (min-width:861px) and (max-width:1100px),(max-width:560px){.status{display:none}}
 @media (max-width:480px){.nav .wrap{gap:12px}.brand{font-size:12px}.status{padding:6px 10px;font-size:10px;letter-spacing:.02em}}
 
 /* ---------- HERO ---------- */
@@ -94,7 +103,7 @@ h1,h2,h3{font-family:var(--display);font-weight:800;margin:0;text-wrap:balance;l
 .hero-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:clamp(20px,3vw,36px);padding-top:18px;border-top:1px solid var(--line-2)}
 .hero-meta div{opacity:0;transform:translateY(12px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .loaded .hero-meta div{opacity:1;transform:none}
-.hero-meta b{display:block;font-weight:500;font-size:15px}
+.hero-meta b{display:block;font-weight:500;font-size:15px;text-wrap:balance}
 .hero-meta b.acc{color:var(--accent)}
 @media (max-width:760px){.hero-meta{grid-template-columns:1fr 1fr}.vf-top .hide-sm{display:none}}
 .exif{position:absolute;right:var(--gutter);bottom:calc(100% + 18px);display:flex;gap:18px;font-family:var(--mono);font-size:11px;color:rgba(245,245,247,.8);letter-spacing:.06em}
@@ -324,6 +333,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
 .cursor{position:fixed;left:0;top:0;z-index:110;pointer-events:none;width:14px;height:14px;margin:-7px 0 0 -7px;border:1.5px solid var(--text);border-radius:50%;transition:width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease),border-radius .35s,border-color .3s,opacity .3s;mix-blend-mode:difference}
 .cursor.view{width:74px;height:74px;margin:-37px 0 0 -37px;border-radius:2px;border-color:var(--accent);mix-blend-mode:normal}
 .cursor.view::after{content:"VIEW";position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--accent)}
+html:lang(pt) .cursor.view::after,html:lang(es) .cursor.view::after{content:"VER"}
 @media (hover:none),(pointer:coarse){.cursor{display:none}}
 
 /* reveal on scroll */
@@ -349,7 +359,14 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
       <a href="#nike">Campaigns</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="status" href="#contact"><span class="dot"></span>Available worldwide</a>
+    <div class="nav-right">
+      <a class="status" href="#contact"><span class="dot"></span><span>Available worldwide</span></a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -396,7 +413,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
   <div class="about-grid">
     <figure class="ph portrait rv"><img src="img/profile/s/mmm-cbf-1.webp" srcset="img/profile/s/mmm-cbf-1.webp 800w, img/profile/l/mmm-cbf-1.webp 1600w" width="800" height="1200" alt="Matheus Maranhão in a CBF polo" loading="lazy" decoding="async" sizes="(min-width:861px) 340px, 240px"><figcaption><span>Matheus Maranhão</span></figcaption></figure>
     <div>
-      <p class="statement" id="statement">Brazilian photographer with more than eight years on the sideline, specializing in <span class="hl">basketball, athlete portraiture and brand productions.</span></p>
+      <p class="statement" id="statement" data-i18n="statement">Brazilian photographer with more than eight years on the sideline, specializing in <span class="hl">basketball, athlete portraiture and brand productions.</span></p>
       <p class="about-sub rv">Official photographer for Brasília Basquete, with extensive experience covering professional basketball, national teams, major sporting events and commercial campaigns.</p>
     </div>
   </div>
@@ -433,10 +450,10 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
   <div class="wrap p-head">
     <div>
       <div class="p-num">01 / Sports · Editorial</div>
-      <h2 class="p-title" id="p1">Brazil National<br><em>Basketball Team</em></h2>
+      <h2 class="p-title" id="p1" data-i18n="p1t">Brazil National<br><em>Basketball Team</em></h2>
     </div>
     <div>
-      <p class="p-desc">Training camp to tip-off. <strong>Access inside a national team environment</strong>: concentration, coaching staff, the minutes nobody else sees and the ones the whole country watches.</p>
+      <p class="p-desc" data-i18n="d1">Training camp to tip-off. <strong>Access inside a national team environment</strong>: concentration, coaching staff, the minutes nobody else sees and the ones the whole country watches.</p>
       <dl class="spec"><div><dt>Client</dt><dd>CBB</dd></div><div><dt>Coverage</dt><dd>Training + Games</dd></div><div><dt>Role</dt><dd>Team photographer</dd></div></dl>
     </div>
   </div>
@@ -452,7 +469,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
       <figure class="ph w"><img src="img/basketball/s/cbb-brasilia-12.webp" srcset="img/basketball/s/cbb-brasilia-12.webp 1200w, img/basketball/l/cbb-brasilia-12.webp 2400w" width="1200" height="800" alt="Coach addressing Brazil players during training camp" loading="lazy" decoding="async" sizes="(min-width:861px) 93vh, 630px"><figcaption><span>Staff</span><span>08/10</span></figcaption></figure>
       <figure class="ph t"><img src="img/basketball/s/brasil-x-dominicana-86.webp" srcset="img/basketball/s/brasil-x-dominicana-86.webp 800w, img/basketball/l/brasil-x-dominicana-86.webp 1600w" width="800" height="1200" alt="Multiple exposure of a warm-up dunk" loading="lazy" decoding="async" sizes="(min-width:861px) 42vh, 280px"><figcaption><span>Warm up</span><span>09/10</span></figcaption></figure>
       <figure class="ph t"><img src="img/basketball/s/brasil-x-dominicana-169.webp" srcset="img/basketball/s/brasil-x-dominicana-169.webp 800w, img/basketball/l/brasil-x-dominicana-169.webp 1600w" width="800" height="1200" alt="Two young fans in Brazil shirts celebrating courtside" loading="lazy" decoding="async" sizes="(min-width:861px) 42vh, 280px"><figcaption><span>Fans</span><span>10/10</span></figcaption></figure>
-      <div class="card cta"><span class="mono">Full set</span><h3>126 frames</h3><p>FIBA World Cup Qualifiers against the Dominican Republic, arena practice and training camp in Brasília.</p><button class="all" data-gal="basketball">View all <b>126</b> frames <span aria-hidden="true">→</span></button></div>
+      <div class="card cta"><span class="mono">Full set</span><h3>126 frames</h3><p>FIBA World Cup Qualifiers against the Dominican Republic, arena practice and training camp in Brasília.</p><button class="all" data-gal="basketball"><span>View all</span> <b>126</b> <span>frames</span> <span aria-hidden="true">→</span></button></div>
     </div>
     <div class="progress" aria-hidden="true"><b id="hbar"></b></div>
   </div>
@@ -479,7 +496,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
   </div>
   <div class="p-foot">
     <div class="credit-line"><span class="pill">Sports</span><span class="pill">NBA</span><span class="pill">Orlando</span></div>
-    <button class="all" data-gal="nba">View all <b>16</b> frames <span aria-hidden="true">→</span></button>
+    <button class="all" data-gal="nba"><span>View all</span> <b>16</b> <span>frames</span> <span aria-hidden="true">→</span></button>
   </div>
 </div>
 
@@ -488,10 +505,10 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
   <div class="wrap p-head">
     <div>
       <div class="p-num">03 / Commercial · Behind the scenes</div>
-      <h2 class="p-title" id="p2">Brazil Football<br><em>National Team</em></h2>
+      <h2 class="p-title" id="p2" data-i18n="p2t">Brazil Football<br><em>National Team</em></h2>
     </div>
     <div>
-      <p class="p-desc">Behind the scenes of the Brazil national football kit campaign, <strong>a production led by Wieden+Kennedy São Paulo</strong> for Nike and Jordan. Big crew, tight call sheet, zero room for a missed frame.</p>
+      <p class="p-desc" data-i18n="d3">Behind the scenes of the Brazil national football kit campaign, <strong>a production led by Wieden+Kennedy São Paulo</strong> for Nike and Jordan. Big crew, tight call sheet, zero room for a missed frame.</p>
       <dl class="spec"><div><dt>Brands</dt><dd>Nike · Jordan</dd></div><div><dt>Shooting location</dt><dd>London, UK</dd></div><div><dt>Role</dt><dd>BTS photographer</dd></div></dl>
     </div>
   </div>
@@ -519,7 +536,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
     </div>
     <div class="p-foot">
       <div class="credit-line"><span class="pill">Tailoring</span><span class="pill">Behind the scenes</span><span class="pill">Product</span><span class="pill">Brands</span></div>
-      <button class="all" data-gal="bts">View all <b>92</b> frames <span aria-hidden="true">→</span></button>
+      <button class="all" data-gal="bts"><span>View all</span> <b>92</b> <span>frames</span> <span aria-hidden="true">→</span></button>
     </div>
   </div>
 </section>
@@ -532,14 +549,14 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
       <h2 class="p-title" id="p3">Puma<br><em>Brasil · Hyrox</em></h2>
     </div>
     <div>
-      <p class="p-desc">A recent campaign that moves the work from coverage into <strong>commercial image making</strong>: Hyrox training and the Nitro running line, lit, directed and built for the brand's channels.</p>
+      <p class="p-desc" data-i18n="d4">A recent campaign that moves the work from coverage into <strong>commercial image making</strong>: Hyrox training and the Nitro running line, lit, directed and built for the brand's channels.</p>
       <dl class="spec"><div><dt>Brand</dt><dd>Puma Brasil</dd></div><div><dt>Year</dt><dd>2026</dd></div><div><dt>Role</dt><dd>Photographer</dd></div></dl>
     </div>
   </div>
   <div class="wrap">
     <div class="puma-hero ph" id="pumaHero">
       <img src="img/puma/s/ironberg-16.webp" srcset="img/puma/s/ironberg-16.webp 1200w, img/puma/l/ironberg-16.webp 2400w" width="1200" height="800" alt="Athlete driving a sled across the Hyrox training floor" loading="lazy" decoding="async" sizes="(min-width:1600px) 1488px, 100vw">
-      <div class="over"><span class="mono" style="color:var(--text)">Puma × Hyrox</span><div class="big">Built<br>to move</div></div>
+      <div class="over"><span class="mono" style="color:var(--text)">Puma × Hyrox</span><div class="big" data-i18n="big">Built<br>to move</div></div>
     </div>
     <div class="puma-grid">
       <figure class="ph a rv"><img src="img/puma/s/ironberg-2-341.webp" srcset="img/puma/s/ironberg-2-341.webp 800w, img/puma/l/ironberg-2-341.webp 1600w" width="800" height="1200" alt="Multiple exposure of an athlete carrying kettlebells in Puma shoes" loading="lazy" decoding="async" sizes="(min-width:861px) 40vw, 100vw"><figcaption><span>Training</span><span>Hyrox</span></figcaption></figure>
@@ -559,7 +576,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
     </div>
     <div class="p-foot">
       <div class="credit-line"><span class="pill">Brands</span><span class="pill">Hyrox</span><span class="pill">Brazil</span><span class="pill">2026</span></div>
-      <button class="all" data-gal="puma">View all <b>48</b> frames <span aria-hidden="true">→</span></button>
+      <button class="all" data-gal="puma"><span>View all</span> <b>48</b> <span>frames</span> <span aria-hidden="true">→</span></button>
     </div>
   </div>
 </section>
@@ -569,19 +586,19 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
   <div class="wrap p-head">
     <div>
       <div class="p-num">05 / Football · Editorial</div>
-      <h2 class="p-title" id="p5">Brazil National<br><em>Football Team</em></h2>
+      <h2 class="p-title" id="p5" data-i18n="p5t">Brazil National<br><em>Football Team</em></h2>
     </div>
     <div>
-      <p class="p-desc">A FIFA World Cup qualifier in Brasília and training days at Granja Comary. <strong>The stadium at full volume</strong>, then the quiet work that comes before it.</p>
+      <p class="p-desc" data-i18n="d5">A FIFA World Cup qualifier in Brasília and training days at Granja Comary. <strong>The stadium at full volume</strong>, then the quiet work that comes before it.</p>
       <dl class="spec"><div><dt>Match</dt><dd>Brazil vs Peru</dd></div><div><dt>Training</dt><dd>Granja Comary</dd></div><div><dt>Years</dt><dd>2024 · 2026</dd></div></dl>
     </div>
   </div>
   <div class="wrap">
     <div class="season-bar">
       <div class="chips" role="group" aria-label="Filter football frames">
-        <button class="chip" aria-pressed="true" data-f="all">All<small></small></button>
-        <button class="chip" aria-pressed="false" data-f="match">Qualifier<small></small></button>
-        <button class="chip" aria-pressed="false" data-f="training">Training<small></small></button>
+        <button class="chip" aria-pressed="true" data-f="all"><span>All</span><small></small></button>
+        <button class="chip" aria-pressed="false" data-f="match"><span>Qualifier</span><small></small></button>
+        <button class="chip" aria-pressed="false" data-f="training"><span>Training</span><small></small></button>
       </div>
       <span class="mono" id="sheetCount">Showing 9 of 9 frames</span>
     </div>
@@ -598,7 +615,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
     </div>
     <div class="p-foot">
       <div class="credit-line"><span class="pill">Sports</span><span class="pill">Brazil</span><span class="pill">Football</span><span class="pill">Brasília</span><span class="pill">Teresópolis</span><span class="pill">CBF</span></div>
-      <button class="all" data-gal="football">View all <b>35</b> frames <span aria-hidden="true">→</span></button>
+      <button class="all" data-gal="football"><span>View all</span> <b>35</b> <span>frames</span> <span aria-hidden="true">→</span></button>
     </div>
   </div>
 </section>
@@ -608,9 +625,9 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
   <div class="wrap p-head">
     <div>
       <div class="p-num">06 / Range</div>
-      <h2 class="p-title" id="p6">Major<br><em>Competitions</em></h2>
+      <h2 class="p-title" id="p6" data-i18n="p6t">Major<br><em>Competitions</em></h2>
     </div>
-    <p class="p-desc">Different sports. Different stages. <strong>The same pursuit of the decisive moment.</strong></p>
+    <p class="p-desc" data-i18n="d6">Different sports. Different stages. <strong>The same pursuit of the decisive moment.</strong></p>
   </div>
   <div class="wrap">
     <div class="masonry">
@@ -626,7 +643,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
     </div>
     <div class="p-foot">
       <span class="mono">VNL Brasília · ATP Champions Tour Brasília</span>
-      <button class="all" data-gal="selected">View all <b>100</b> frames <span aria-hidden="true">→</span></button>
+      <button class="all" data-gal="selected"><span>View all</span> <b>100</b> <span>frames</span> <span aria-hidden="true">→</span></button>
     </div>
     <div class="events">
       <div class="rv"><b>VNL</b><span>Volleyball Nations League · Brasília</span></div>
@@ -642,7 +659,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
   <div class="contact-bg"><img src="img/selected/s/vnl-m2-91.webp" srcset="img/selected/s/vnl-m2-91.webp 1200w, img/selected/l/vnl-m2-91.webp 2400w" width="1200" height="800" alt="" loading="lazy" decoding="async" sizes="100vw"></div>
   <div class="wrap">
     <p class="eyebrow" style="margin-bottom:28px">Contact</p>
-    <h2 id="c-title">Let's<br>shoot<span>.</span></h2>
+    <h2 id="c-title" data-i18n="ctitle">Let's<br>shoot<span>.</span></h2>
     <div class="contact-grid">
       <div>
         <span class="mono">Email</span>
@@ -651,7 +668,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
       <ul class="links">
         <li><a href="https://www.instagram.com/mmaranhaofoto/" target="_blank" rel="noopener"><span>Instagram</span><span class="mono">@mmaranhaofoto ↗</span></a></li>
         <li><a href="#" aria-label="LinkedIn (placeholder link)"><span>LinkedIn</span><span class="mono">in/matheusmaranhao ↗</span></a></li>
-        <li><a href="#" aria-label="Website (placeholder link)"><span>Website</span><span class="mono">matheusmaranhao.com ↗</span></a></li>
+        <li><a href="https://mmaranhaofoto.com/"><span>Website</span><span class="mono">mmaranhaofoto.com ↗</span></a></li>
       </ul>
       <div class="clocks">
         <div class="clock"><span class="mono">Brasília · BR</span><b id="clkBsb">--:--</b></div>
@@ -659,7 +676,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
         <div class="clock"><span class="mono">Los Angeles · US</span><b id="clkLa">--:--</b></div>
       </div>
     </div>
-    <p class="reloc"><span class="dot"></span>Available worldwide.</p>
+    <p class="reloc"><span class="dot"></span><span>Available worldwide.</span></p>
     <footer>
       <span class="mono">© 2026 Matheus Maranhão</span>
       <span class="mono">Sports Photographer · Brasília, Brazil</span>
@@ -692,6 +709,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
 <div class="cursor" id="cursor" aria-hidden="true"></div>
 
 <script src="photos.js"></script>
+<script src="i18n.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
@@ -701,6 +719,41 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
   const desktop = matchMedia('(min-width: 861px)').matches;
   const P = window.PHOTOS || {};
   document.documentElement.classList.add('js');
+
+  /* idioma: o inglês está no HTML; PT e ES vêm do i18n.js. Ordem: ?lang= no link, escolha salva, idioma do navegador, inglês */
+  const L=window.I18N||{}, LANGS=['en','pt','es'], metaDesc=document.querySelector('meta[name="description"]');
+  const UI_EN={showing:'Showing {n} of {t} frames',framesN:'{n} frames',open:'Open photo: ',openN:'Open photo {n}: ',shutter:'Shutter',aperture:'Aperture',iso:'ISO',lens:'Lens',locale:'en-US',title:document.title,desc:metaDesc.content};
+  let lang=(()=>{
+    let q=null; try{q=new URLSearchParams(location.search).get('lang');}catch(e){}
+    if(LANGS.includes(q)) return q;
+    try{const s=localStorage.getItem('lang'); if(LANGS.includes(s)) return s;}catch(e){}
+    return (navigator.languages||[navigator.language]).map(l=>String(l||'').slice(0,2).toLowerCase()).find(l=>LANGS.includes(l))||'en';
+  })();
+  const t=k=>(lang!=='en'&&((L[lang]||{}).ui||{})[k])||UI_EN[k];
+  const tr=s=>(s&&lang!=='en'&&((L[lang]||{}).text||{})[s])||s;
+  /* elementos só de texto traduzidos pela frase em inglês (text no i18n.js) */
+  const LEAF='.nav-links a,.status span:last-child,.hero-meta b,.marquee span,.about-head,.about-sub,.stat p,figcaption span,.index-head h2,.idx-list .t,.idx-list .cat,.p-num,.spec dt,.spec dd,.card .mono,.card h3,.card p,.all>span:not([aria-hidden]),.pill,.sub-head .mono,.d blockquote,.d li span,.nba-cap p,.chip span,.events span,.contact .eyebrow,.contact-grid .mono,.links a>span:first-child,.reloc span:last-child,footer .mono';
+  const ARIA='.hero,.marquee,.nav-links,.lang,.chips,#galClose,#lbClose,#lbPrev,#lbNext,#lb';
+  const EN=new Map(), langHooks=[];
+  const en=(el,k,v)=>{let o=EN.get(el);if(!o)EN.set(el,o={});if(!(k in o))o[k]=v;return o[k];};
+  const applyLang=()=>{
+    const H=lang==='en'?{}:((L[lang]||{}).html||{});
+    document.documentElement.lang=lang==='pt'?'pt-BR':lang;
+    document.title=t('title'); metaDesc.content=t('desc');
+    document.querySelectorAll('[data-i18n]').forEach(el=>{const o=en(el,'html',el.innerHTML);el.innerHTML=H[el.dataset.i18n]||o;});
+    document.querySelectorAll(LEAF).forEach(el=>{el.textContent=tr(en(el,'text',el.textContent));});
+    document.querySelectorAll('img[alt]').forEach(im=>{const o=en(im,'alt',im.alt);if(o)im.alt=tr(o);});
+    document.querySelectorAll(ARIA).forEach(el=>el.setAttribute('aria-label',tr(en(el,'aria',el.getAttribute('aria-label')))));
+    document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang));
+    langHooks.forEach(f=>f());
+  };
+  applyLang();
+  document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>{
+    if(b.dataset.lang===lang) return; lang=b.dataset.lang;
+    try{localStorage.setItem('lang',lang);}catch(e){}
+    try{const u=new URL(location.href);if(u.searchParams.has('lang')){u.searchParams.delete('lang');history.replaceState(null,'',u);}}catch(e){}
+    applyLang();
+  }));
 
   /* split hero name into letters */
   document.querySelectorAll('[data-split]').forEach((el,li)=>{
@@ -759,20 +812,23 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
 
   /* statement word reveal */
   const st=document.getElementById('statement');
-  (function wrapWords(node){
+  const wrapWords=node=>{
     [...node.childNodes].forEach(n=>{
       if(n.nodeType===3){const f=document.createDocumentFragment();n.textContent.split(/(\s+)/).forEach(w=>{if(!w.trim()){f.appendChild(document.createTextNode(w));return;}const s=document.createElement('span');s.className='w';s.textContent=w;f.appendChild(s);});n.replaceWith(f);}
       else if(n.nodeType===1) wrapWords(n);
     });
-  })(st);
-  const words=st.querySelectorAll('.w');
-  if(reduce||!window.ScrollTrigger){words.forEach(w=>w.style.opacity=1);}
+  };
+  let words=[], stProg=0;
+  const still=reduce||!window.ScrollTrigger;
+  const paintWords=()=>{const k=stProg*words.length;words.forEach((w,i)=>w.style.opacity=still?1:Math.max(.18,Math.min(1,k-i+.5)));};
+  const wrapStatement=()=>{wrapWords(st);words=st.querySelectorAll('.w');};
+  wrapStatement();
+  if(still){paintWords();}
   else{
     gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.create({trigger:st,start:'top 80%',end:'bottom 45%',scrub:true,onUpdate:s=>{
-      const k=s.progress*words.length; words.forEach((w,i)=>w.style.opacity=Math.max(.18,Math.min(1,k-i+.5)));
-    }});
+    ScrollTrigger.create({trigger:st,start:'top 80%',end:'bottom 45%',scrub:true,onUpdate:s=>{stProg=s.progress;paintWords();}});
   }
+  langHooks.push(()=>{wrapStatement();if(still||stProg>0)paintWords();});
 
   if(window.ScrollTrigger && !reduce){
     /* 01 horizontal pin */
@@ -814,31 +870,34 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
 
   /* football filter: counts come from the frames on the page */
   const chips=document.querySelectorAll('.chip'), frames=document.querySelectorAll('#sheet .ph'), cnt=document.getElementById('sheetCount');
+  let shown=frames.length;
+  const paintCount=()=>cnt.textContent=t('showing').replace('{n}',shown).replace('{t}',frames.length);
   chips.forEach(c=>{const f=c.dataset.f;c.querySelector('small').textContent=f==='all'?frames.length:[...frames].filter(x=>x.dataset.cat===f).length;});
   chips.forEach(c=>c.addEventListener('click',()=>{
     chips.forEach(x=>x.setAttribute('aria-pressed',x===c));
     const f=c.dataset.f; let n=0;
     frames.forEach(fr=>{const on=f==='all'||fr.dataset.cat===f;fr.classList.toggle('off',!on);if(on)n++;fr.tabIndex=on?0:-1;});
-    cnt.textContent=`Showing ${n} of ${frames.length} frames`;
+    shown=n; paintCount();
   }));
+  paintCount(); langHooks.push(paintCount);
 
   /* photo data: [id, w, h, group, exif, gear, date, alt] per set, from photos.js */
   const pad=n=>String(n).padStart(2,'0');
   const path=(set,id,size)=>`img/${set}/${size}/${id}.webp`;
   const meta=(set,i)=>{const it=P[set].i[i];return{id:it[0],w:it[1],h:it[2],group:P[set].g[it[3]],exif:it[4],gear:it[5],date:it[6],alt:it[7]||P[set].g[it[3]]};};
-  const month=d=>d?new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',year:'numeric'}):'';
+  const month=d=>d?new Date(d+'T12:00:00').toLocaleDateString(t('locale'),{month:'short',year:'numeric'}):'';
   const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const lock=()=>{const on=!lb.hidden||!gal.hidden;document.documentElement.classList.toggle('lock',on);if(lenis)on?lenis.stop():lenis.start();};
 
   /* lightbox */
   const lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'), lbCap=document.getElementById('lbCap'), lbExif=document.getElementById('lbExif'), lbIdx=document.getElementById('lbIdx'), lbSet=document.getElementById('lbSet'), lbGear=document.getElementById('lbGear');
   let lbS=null, lbI=0, lastFocus=null;
-  const LABEL=[[/s$/,'Shutter'],[/^f\//,'Aperture'],[/^ISO /,'ISO'],[/mm$/,'Lens']];
+  const LABEL=[[/s$/,'shutter'],[/^f\//,'aperture'],[/^ISO /,'iso'],[/mm$/,'lens']];
   const show=i=>{
     const n=P[lbS].i.length; lbI=(i+n)%n; const m=meta(lbS,lbI), want=path(lbS,m.id,'l');
-    lbImg.src=path(lbS,m.id,'s'); lbImg.alt=m.alt; lbCap.textContent=m.alt; lbSet.textContent=m.group;
+    lbImg.src=path(lbS,m.id,'s'); lbImg.alt=tr(m.alt); lbCap.textContent=tr(m.alt); lbSet.textContent=tr(m.group);
     const big=new Image(); big.onload=()=>{if(P[lbS]&&P[lbS].i[lbI][0]===m.id) lbImg.src=want;}; big.src=want;
-    lbExif.innerHTML=m.exif?m.exif.split(' · ').map(v=>{const l=(LABEL.find(([r])=>r.test(v))||[0,''])[1];return `<span>${l}<b>${esc(l==='ISO'?v.slice(4):v)}</b></span>`;}).join(''):'';
+    lbExif.innerHTML=m.exif?m.exif.split(' · ').map(v=>{const k=(LABEL.find(([r])=>r.test(v))||[0,''])[1];return `<span>${k?t(k):''}<b>${esc(k==='iso'?v.slice(4):v)}</b></span>`;}).join(''):'';
     lbGear.textContent=[m.gear,month(m.date)].filter(Boolean).join(' · ');
     lbIdx.textContent=pad(lbI+1)+' / '+pad(n);
     [1,-1].forEach(d=>{const im=new Image();im.src=path(lbS,P[lbS].i[(lbI+d+n)%n][0],'l');});
@@ -846,12 +905,15 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
   const open=(set,i)=>{if(!P[set])return;lastFocus=document.activeElement;lbS=set;show(i);lb.hidden=false;requestAnimationFrame(()=>lb.classList.add('open'));lock();document.getElementById('lbClose').focus();};
   const close=()=>{lb.classList.remove('open');setTimeout(()=>{lb.hidden=true;lock();},400);lastFocus&&lastFocus.focus();};
   /* every photo on the page opens its project set, found by the image path */
+  const phs=[];
   document.querySelectorAll('.ph img').forEach(im=>{
     const m=(im.getAttribute('src')||'').match(/^img\/(\w+)\/[sl]\/([\w-]+)\.webp$/); if(!m||!P[m[1]]) return;
     const i=P[m[1]].i.findIndex(x=>x[0]===m[2]); if(i<0) return;
-    const f=im.closest('.ph');f.tabIndex=0;f.setAttribute('role','button');f.setAttribute('aria-label','Open photo: '+im.alt);
+    const f=im.closest('.ph');f.tabIndex=0;f.setAttribute('role','button');phs.push([f,im]);
     f.addEventListener('click',()=>open(m[1],i));f.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(m[1],i);}});
   });
+  const paintPh=()=>phs.forEach(([f,im])=>f.setAttribute('aria-label',t('open')+im.alt));
+  paintPh(); langHooks.push(paintPh);
   document.getElementById('lbClose').onclick=close;
   document.getElementById('lbPrev').onclick=()=>show(lbI-1);
   document.getElementById('lbNext').onclick=()=>show(lbI+1);
@@ -864,12 +926,12 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
   let galFrom=null;
   const openGal=(set,btn)=>{
     if(!P[set]) return; galFrom=btn; const S=P[set];
-    galTitle.textContent=S.t; galCount.textContent=S.i.length+' frames';
+    galTitle.textContent=tr(S.t); galCount.textContent=t('framesN').replace('{n}',S.i.length);
     let html='', g=-1;
     S.i.forEach((it,i)=>{
-      if(it[3]!==g){if(g>-1)html+='<i class="gal-end"></i>';g=it[3];html+=`<h3 class="gal-h">${esc(S.g[g])}<span>${S.i.filter(x=>x[3]===g).length}</span></h3>`;}
-      const alt=it[7]||S.g[it[3]];
-      html+=`<button class="gal-it" style="--ar:${(it[1]/it[2]).toFixed(4)}" data-i="${i}" aria-label="Open photo ${i+1}: ${esc(alt)}"><img src="${path(set,it[0],'s')}" width="${it[1]/2}" height="${it[2]/2}" alt="" loading="lazy" decoding="async"></button>`;
+      if(it[3]!==g){if(g>-1)html+='<i class="gal-end"></i>';g=it[3];html+=`<h3 class="gal-h">${esc(tr(S.g[g]))}<span>${S.i.filter(x=>x[3]===g).length}</span></h3>`;}
+      const alt=tr(it[7]||S.g[it[3]]);
+      html+=`<button class="gal-it" style="--ar:${(it[1]/it[2]).toFixed(4)}" data-i="${i}" aria-label="${esc(t('openN').replace('{n}',i+1)+alt)}"><img src="${path(set,it[0],'s')}" width="${it[1]/2}" height="${it[2]/2}" alt="" loading="lazy" decoding="async"></button>`;
     });
     galGrid.innerHTML=html+'<i class="gal-end"></i>'; galGrid.dataset.set=set; gal.scrollTop=0;
     gal.hidden=false; requestAnimationFrame(()=>gal.classList.add('open')); lock(); document.getElementById('galClose').focus();
@@ -889,6 +951,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;margin
   const tick=()=>{document.getElementById('clkBsb').textContent=fmt('America/Sao_Paulo');document.getElementById('clkLon').textContent=fmt('Europe/London');document.getElementById('clkLa').textContent=fmt('America/Los_Angeles');};
   tick();setInterval(tick,1000);
 
+  langHooks.push(()=>window.ScrollTrigger&&ScrollTrigger.refresh());
   addEventListener('load',()=>{placeFocus();window.ScrollTrigger&&ScrollTrigger.refresh();});
 })();
 </script>
